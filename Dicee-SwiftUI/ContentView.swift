@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var leftDie = 1
+    @State var rightDie = 2
+    
     var body: some View {
         ZStack {
             Image("background")
@@ -17,15 +21,16 @@ struct ContentView: View {
                 Image("diceeLogo")
                 Spacer()
                 HStack {
-                    DiceView(number: 1)
-                    DiceView(number: 2)
+                    DiceView(number: leftDie)
+                    DiceView(number: rightDie)
                 }
                 .padding(.horizontal)
                 
                 Spacer()
                 
                 Button(action: {
-                    
+                    leftDie = Int.random(in: 1...6)
+                    rightDie = Int.random(in: 1...6)
                 }) {
                     Text("Roll")
                         .font(.system(size: 50))
